@@ -1,0 +1,142 @@
+<!doctype html>
+<html
+  itemscope
+  class="{{- if not site.Params.theme_switcher -}}
+    {{- site.Params.theme_default -}}
+  {{- end -}}"
+  lang="{{ site.LanguageCode | default `en-US` }}"
+  itemtype="http://schema.org/WebPage">
+  <head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/js/DataTables/datatables.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"
+/>
+    <!-- 终端打印版本号打印 -->
+    {{ warnf "version-2.1.5" }}
+    <!-- head (don't cache it) -->
+    {{ partial "essentials/head.html" . }}
+    
+    {{ partial "essentials/i18n.html" }}
+
+    <!-- style (always cache it) -->
+    {{ partialCached "essentials/style.html" . }}
+  </head>
+
+  <body>
+    
+      {{ if hugo.IsProduction }}
+      {{ partialCached "preloader.html" . }}
+      {{ partialCached "gtm-noscript.html" . }}
+    {{ else }}
+      {{ partial "preloader.html" . }}
+
+
+      <!-- tailwind size indicator -->
+      <!-- {{ partial "components/tw-size-indicator.html" . }} -->
+    {{ end }}
+
+
+    <!-- header (don't cache it) -->
+    {{ partial "essentials/header.html" . }}
+    {{ partial "search-modal.html" (dict "Context" . ) }}
+    
+    <!-- <main style="min-height: 788px;"> -->
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header" style="border-bottom: none; height: 1rem;">
+            <div class="header-text">
+              Email Verification
+            </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+            <form>
+              <div class="form-item">
+                <div class="form-item-label">
+                  Email
+                </div>
+                <div>
+                  <div class="input-btn">
+                    <input type="text" class="email_input" name="email_input" autocomplete="off" />    
+                    <span id="input-innerBtn" class="input-innerBtn" content="Send Verification Code">
+                      Send Verification Code
+                    </span>
+                  </div>
+                  <div class="error-text">This is an error message.</div>  
+                </div>
+              </div>
+              <div class="form-item">
+                <div class="form-item-label">
+                  Email Verification Code
+                </div>
+                <div>
+                  <input type="text" class="validate_code" name="validate_code" autocomplete="off" />  
+                  <div class="error-text">This is an error message.</div>  
+                </div>
+              </div>
+              <button id="modal-submit" class="btn-template modal-submit" type="submit">
+                Bind Email
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="alert-modal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header" style="border-bottom: none; height: 1rem;">
+            <div class="header-text">
+              alertHeader
+            </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+            <div class="content">
+              alertText
+            </div>
+            <div id="alert-modal-btn" class="btn-template template2" data-dismiss="modal">
+              ok
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- cache partial only in production -->
+    {{ if hugo.IsProduction }}
+      {{ partialCached "essentials/footer.html" . }}
+      {{ partialCached "essentials/script.html" . }}
+    {{ else }}
+      {{ partial "essentials/footer.html" . }}
+      {{ partial "essentials/script.html" . }}
+    {{ end }}
+    <!-- <div class="circle1"></div>
+    <div class="circle2">
+      <div></div>
+    </div>
+    <div class="circle3"></div>
+    <div class="circle4">
+      <div></div>
+    </div> -->
+    <!-- cache partial only in production -->
+
+  </body>
+  <script src="/js/jquery-3.6.0.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/profile-avatar.js"></script>
+  <script src="/js/table-xhr.js"></script>
+  <script src="/js/subscription-table-search.js"></script>
+  <script src="/js/DataTables/datatables.js"></script>
+  <script src="/js/sm-folder-close.js"></script>
+</html>

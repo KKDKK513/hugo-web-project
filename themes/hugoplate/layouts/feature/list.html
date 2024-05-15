@@ -1,0 +1,101 @@
+{{ define "main" }}
+  <div class="feature-section 
+    2xl:px-[32px] 2xl:flex-nowrap
+    xl:justify-between px-[32px] xl:flex-nowrap
+    lg:justify-center px-[32px] lg:flex-nowrap
+    md:justify-center px-[32px] md:flex-wrap
+    sm:justify-center px-[32px] sm:flex-wrap
+    xs:px-[10px] xs:justify-center xs:flex-wrap">
+    <div class="download-part mb-[80px] xl:mr-[80px] lg:mr-[80px] lg:mb-0 md:mr-0 sm:mr-0">
+      <div class="header-img">
+        {{ partial "image" (dict "Src" site.Data.pageImage.feature.image1) }}
+      </div>
+      <div class="text">
+        {{ if T "3032" }}
+          {{ T "3032" | safeHTML }}
+        {{ else }}
+          {{ "3032" | safeHTML }}
+        {{ end }}
+      </div>
+      <div class="download-btn" style="margin-bottom:24px">
+        {{ partial "image" (dict "Src" .Params.btnIcon1) }}
+        <div>
+          <div class="text1">{{.Params.btnText}}</div>
+          <div class="text2">{{.Params.btnText1}}</div>
+        </div>
+      </div>
+      <div class="download-btn">
+        {{ partial "image" (dict "Src" .Params.btnIcon2) }}
+        <div>
+          <div class="text1">{{.Params.btnText}}</div>
+          <div class="text2">{{.Params.btnText2}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="cards-part">
+      <div class="cards-part-title">
+        <div class="feature-circle1"></div>
+        <!-- <div >
+          {{ partial "image" (dict "Src" "/images/Ellipse 7.svg" "Class" "feature-circle2" "Size" "400x200") }}
+        </div> -->
+        <!-- <img src="/images/Ellipse 7.svg" class="feature-circle2" alt=""> -->
+        <div class="feature-circle2-container">
+          <div class="feature-circle2"></div>
+        </div>
+        {{ if T "3001" }}
+          {{ T "3001" | safeHTML }}
+        {{ else }}
+          {{ "3001" | safeHTML }}
+        {{ end }}
+      </div>
+      {{ with .Params.cards }}
+        {{ range $i, $e:= . }}
+          <div class="cards-part-container">
+            <div class="container-title">
+              {{ if T .title }}
+                {{ T .title | safeHTML }}
+              {{ else }}
+                {{ .title | safeHTML }}
+              {{ end }}
+            </div>
+            <div class="range-area 2xl:justify-between xl:justify-between lg:justify-between md: justify-between sm: justify-between xs:justify-center">
+              {{ range $ii, $ee:= .content }}
+                <div class="range-item xs:pb-[20px]">
+                  <div class="black-square">
+                    {{ partial "image" (dict "Src" .image ) }}
+                  </div>
+                  <div class="item-text1">
+                    {{ if T .text1 }}
+                      {{ T .text1 | safeHTML }}
+                    {{ else }}
+                      {{ .text1 | safeHTML }}
+                    {{ end }}
+                  </div>
+                  {{ if .text2 }} 
+                    <div class="item-text2">
+                      {{ if T .text2 }}
+                        {{ T .text2 | safeHTML }}
+                      {{ else }}
+                        {{ .text2 | safeHTML }}
+                      {{ end }}
+                    </div>
+                  {{ end }}
+
+                  {{ if .text3 }} 
+                    <div class="item-text2">
+                      {{ if T .text3 }}
+                        {{ T .text3 | safeHTML }}
+                      {{ else }}
+                        {{ .text3 | safeHTML }}
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,52 @@
+.profile-section .text1{
+  display: block;
+  .edit-title{
+    display: flex;
+    justify-content: center;
+  }
+  .edit-container{
+    overflow: hidden;
+    display: none;
+    margin-bottom: 15px;
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #44515C;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    input:focus{
+      border: 1px solid #44515C;
+      --tw-ring-color: #44515C;
+    }
+    .btn-list{
+      display: flex;
+      gap: 15px;
+      justify-content: space-between;
+    }
+    .cancel-btn{
+      display: inline-block;
+      width: 35%;
+      color: #9BABB7;
+      font-family: Roboto Condensed;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px; /* 142.857% */
+      height: 40px;
+      padding: 8px 12px;
+      gap: 4px;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(0deg, #1F262C 0%, #2A3137 100%);
+      box-shadow: 0px 2px 4px 0px rgba(16, 24, 40, 0.40), 0px 1px 0px 0px rgba(255, 255, 255, 0.05) inset;
+    }
+    .cancel-btn:hover{
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), linear-gradient(0deg, #1F262C 0%, #2A3137 100%);
+      background-blend-mode: plus-lighter, normal;
+      box-shadow: 0px 2px 4px 0px rgba(16, 24, 40, 0.40), 0px 1px 0px 0px rgba(255, 255, 255, 0.05) inset;
+    }
+    .save-btn{
+      width: 65%;
+    }
+  }
+}

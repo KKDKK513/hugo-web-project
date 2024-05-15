@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <section class="modal-section">
+    <div class="btn-template template2" data-toggle="modal" data-target="#myModal-1">
+      {{ if T .Params.btn }}
+        {{ T .Params.btn | safeHTML }}
+      {{ else }}
+        {{ .Params.btn | safeHTML }}
+      {{ end }}
+    </div>
+    <!-- <div class="btn-template template2" data-toggle="modal" data-target="#alert-modal">
+      {{ if T .Params.alertBtn }}
+        {{ T .Params.alertBtn | safeHTML }}
+      {{ else }}
+        {{ .Params.alertBtn | safeHTML }}
+      {{ end }}
+    </div> -->
+   
+    <!-- hyc -->
+    <div class="menu-btn 2xl:mr-[32px] xl:mr-[32px] lg:mr-[32px] md:mr-[20px] sm:mr-[20px] xs:mr-[10px]">
+      <div id="diamond-select1" style="margin-left: 30px; margin-top: 50px;">
+        {{ if T 1007 }}
+          {{ T 1007 | safeHTML }} 
+        {{ else }}
+          {{ 1007 | safeHTML }} 
+        {{ end }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="diamond-option-area" style="left: 0px;">
+          <div class="language-option-row diamond-option-row">
+              {{ partial "image" (dict "Src" .Params.textalert.icon) }}
+              {{ .Params.textalert.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+{{ end }}

@@ -1,0 +1,404 @@
+{{ define "main" }}
+  <section class="stake-section 
+    2xl:justify-between 2xl:flex-nowrap 
+    xl:justify-between xl:flex-nowrap
+    lg:justify-center lg:flex-nowrap
+    md:justify-center md:flex-wrap
+    sm:justify-center sm:flex-wrap
+    xs: justify-center xs:flex-wrap">
+    <div class="stake-left-part xl:mr-[64px] lg:mr-[64px] md:mr-0 sm:mr-0">
+      <div class="title">
+        {{ if T .Params.pageLeft.title }}
+          {{ T .Params.pageLeft.title | safeHTML }}
+        {{ else }}
+          {{ .Params.pageLeft.title }}
+        {{ end }}
+      </div>
+      {{ range .Params.pageLeft.container }}
+        <div class="title1">
+          {{ if T .title }}
+            {{ T .title | safeHTML }}
+          {{ else }}
+            {{ .title }}
+          {{ end }}
+        </div>
+        <div class="content1">
+          {{ if .icon }}
+            {{ partial "image" (dict "Src" .icon ) }}
+          {{ end }}
+          {{ .content }}
+        </div>
+      {{ end }}
+      <div class="footLink">
+        {{ if T .Params.pageLeft.footLink }}
+          {{ T .Params.pageLeft.footLink | safeHTML }}
+        {{ else }}
+          {{ .Params.pageLeft.footLink }}
+        {{ end }}
+      </div>
+      <div class="square-box">
+        {{ partial "image" (dict "Src" site.Data.pageImage.stake.image1) }}
+      </div>
+    </div>
+    <div class="stake-right-part">
+      <div class="right-part-one">
+        <div class="content-one">
+          {{ if T .Params.pageRightContent1 }}
+            {{ T .Params.pageRightContent1 | safeHTML }}
+          {{ else }}
+            {{ .Params.pageRightContent1 }}
+          {{ end }}
+        </div>
+        <div class="link-one">
+          {{ if T .Params.pageRightLink1 }}
+            {{ T .Params.pageRightLink1 | safeHTML }}
+          {{ else }}
+            {{ .Params.pageRightLink1 }}
+          {{ end }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 6H6V14H14V10" stroke="#03FF85"/>
+            <path d="M9 11L15 5M15 5V8.42857M15 5H11.5714" stroke="#03FF85"/>
+          </svg>
+        </div>
+      </div>
+      <div class="right-part-two">
+        <div class="title">
+          {{ if T 7010 }}
+            {{ T 7010 | safeHTML }}
+          {{ else }}
+            7010
+          {{ end }}
+        </div>
+        <div class="dashboards-show justify-between">
+          <div style="width: 320px;" class="dashboard dashboard-one 2xl:mb-0 xl:mb-0 lg:mb-0 md:mb-[40px] sm:mb-[40px] xs:mb-[40px]">
+            {{ range $i, $e := .Params.dashboards }}
+              <div class="dashboard-flex-part" style="flex-grow:1;">
+                <div class="title">
+                  {{ if T .title }}
+                    {{ T .title }}
+                  {{ else }}
+                    {{ .title }}
+                  {{ end }}
+                </div>
+                <div class="text">
+                  {{ if .icon }}
+                    {{ partial "image" (dict "Src" .icon "Size" "16x16") }}
+                    {{ end }}
+                  {{ if T .text }}
+                    {{ T .text }}
+                  {{ else }}
+                    {{ .text }}
+                  {{ end }}
+                </div>
+              </div>
+            {{end}}
+          </div>
+          <div class="dashboard dashboard-two">
+            <div id="dashboard-header" class="dashboard-header slide-left">
+              {{ $dashboardTwo := .Params.dashboardTwo }}
+              <div id="slide-btn" class="slide-btn">
+
+              </div>
+              <div class="header-text text1">
+                {{ if T $dashboardTwo.headerBtn1 }}
+                  {{ T $dashboardTwo.headerBtn1 | safeHTML }}
+                {{ else }}
+                  {{ $dashboardTwo.headerBtn1 }}
+                {{ end }}
+              </div>
+              <div class="header-text text2">
+                {{ if T $dashboardTwo.headerBtn2 }}
+                  {{ T $dashboardTwo.headerBtn2 | safeHTML }}
+                {{ else }}
+                  {{ $dashboardTwo.headerBtn2 }}
+                {{ end }}
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="title">
+                {{ if T $dashboardTwo.title1 }}
+                  {{ T $dashboardTwo.title1 | safeHTML }}
+                {{ else }}
+                  {{ $dashboardTwo.title1 }}
+                {{ end }}
+              </div>
+              <div class="text">
+                {{ if T $dashboardTwo.content2 }}
+                  {{ T $dashboardTwo.content2 | safeHTML }}
+                {{ else }}
+                  {{ $dashboardTwo.content2 }}
+                {{ end }}
+                <svg id="copy-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 13V5H12" stroke="#3E4A57"/>
+                  <path d="M8 15H14V7H8V15Z" stroke="#3E4A57"/>
+                </svg>
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="title">
+                {{ if T $dashboardTwo.title2 }}
+                  {{ T $dashboardTwo.title2 | safeHTML }}
+                {{ else }}
+                  {{ $dashboardTwo.title2 }}
+                {{ end }}
+              </div>
+              <div class="text change-text">
+                <span class="flex-span1">
+                  {{ if T $dashboardTwo.content21 }}
+                    {{ T $dashboardTwo.content21 | safeHTML }}
+                  {{ else }}
+                    {{ $dashboardTwo.content21 }}
+                  {{ end }}
+                </span>
+                <span class="flex-span2">
+                  {{ if T $dashboardTwo.content22 }}
+                    {{ T $dashboardTwo.content22 | safeHTML }}
+                  {{ else }}
+                    {{ $dashboardTwo.content22 }}
+                  {{ end }}
+                </span>
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="title">
+              </div>
+              <div class="button-row">
+                <div class="text-row">
+                  <span>
+                    {{ if T $dashboardTwo.tip1 }}
+                      {{ T $dashboardTwo.tip1 | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.tip1 }}
+                    {{ end }}
+                  </span>
+                  <span style="color:#E7DED0">
+                    {{ if T $dashboardTwo.tip2 }}
+                      {{ T $dashboardTwo.tip2 | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.tip2 }}
+                    {{ end }}
+                  </span>
+                  <span>
+                    {{ if T $dashboardTwo.tip3 }}
+                      {{ T $dashboardTwo.tip3 | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.tip3 }}
+                    {{ end }}
+                  </span>
+                  <span style="color: #03FF85;">
+                    {{ if T $dashboardTwo.tip4 }}
+                      {{ T $dashboardTwo.tip4 | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.tip4 }}
+                    {{ end }}
+                  </span>
+                </div>
+                <div style="display: flex;flex-shrink: 0;margin-left:5px">
+                  <div class="button btn">
+                    {{ if T $dashboardTwo.btn }}
+                      {{ T $dashboardTwo.btn | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.btn }}
+                    {{ end }}
+                  </div>
+                  <div class="button btn1">
+                    {{ if T $dashboardTwo.btn1 }}
+                      {{ T $dashboardTwo.btn1 | safeHTML }}
+                    {{ else }}
+                      {{ $dashboardTwo.btn1 }}
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-part-three">
+        <div class="part-title">
+          <div class="title-text">
+            {{ if T 7033 }}
+              {{ T 7033 | safeHTML }}
+            {{ else }}
+              7033
+            {{ end }}
+          </div>
+          <div class="title-search">
+            {{ $placeholder := T 77003 }}
+            <label for="search-by"><i class="fas fa-search"></i></label>
+            <input id="data-search-input" data-search-input id="search-by" type="search" placeholder="{{ if $placeholder }} {{ $placeholder }} {{else}} 77003{{end}}">
+            <span id="data-search-clear" data-search-clear=""><i class="fas fa-times"></i></span>
+          </div>
+        </div>
+        <div class="part-content">
+          <table>
+            <tr class="header">
+              {{ range $e := .Params.tableHeader }}
+                <th style="width: {{.width}};text-align:left" >{{ .title }}</th>
+              {{ end }}
+            </tr>
+            {{ range $e := .Params.tableData }}
+              <tr>
+                {{ range $ee := .data }}
+                  <td class="data-td {{ if .class }} {{ .class }} {{end}}">
+                    {{ if .color }}
+                      <div class="circle" style="background-color: {{ .color  }}"></div>
+                    {{ end }}
+                    {{ .value }}
+                    {{ if .imageBehind }}
+                      {{ partial "image" (dict "Src" .imageBehind "Size" .size "Class" "imageBehind") }}
+                    {{ end }}
+                  </td>
+                {{ end }}
+              </tr>
+            {{ end }}
+            <tr class="table-footer">
+                <th colspan="3" class="th-one">
+                  {{ if T 77015 }}
+                    {{ T 77015 | safeHTML }}
+                  {{ else }}
+                    77015
+                  {{ end }}
+                  <select>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                  </select>
+                </th>
+                <th colspan="4" class="th-two">
+                  <div class="pagination" style="display:inline-block">
+                    <span>
+                      {{ if T 77013 }}
+                        {{ T 77013 | safeHTML }}
+                      {{ else }}
+                        77013
+                      {{ end }}
+                    </span>
+                    <span>
+                      {{ if T 1 }}
+                        {{ T 1 | safeHTML }}
+                      {{ else }}
+                        1
+                      {{ end }}
+                    </span>
+                    <span>
+                      {{ if T 77014 }}
+                        {{ T 77014 | safeHTML }}
+                      {{ else }}
+                        77014
+                      {{ end }}
+                    </span>
+                    <span>
+                      {{ if T 10 }}
+                        {{ T 10 | safeHTML }}
+                      {{ else }}
+                        10
+                      {{ end }}
+                    </span>
+                  </div>
+                  <div style="display:inline-block">
+                    <div class="foot-btn">
+                      {{ if T 77011 }}
+                        {{ T 77011 | safeHTML }}
+                      {{ else }}
+                        77011
+                      {{ end }}
+                    </div>
+                    <div class="foot-btn">
+                      {{ if T 77012 }}
+                        {{ T 77012 | safeHTML }}
+                      {{ else }}
+                        77012
+                      {{ end }}
+                    </div>
+                  </div>
+                </th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="right-part-three">
+        <div class="text1">
+          {{ if T 7037 }}
+            {{ T 7037 | safeHTML }}
+          {{ else }}
+            7037
+          {{ end }}
+        </div>
+        <div class="text4">
+          <div class="title">
+            {{ if T 7038 }}
+              {{ T 7038 | safeHTML }}
+            {{ else }}
+              7038
+            {{ end }}
+          </div>
+          <div class="text">
+            <div class="circle"></div>
+            <div>
+              {{ if T 77021 }}
+                {{ T 77021 | safeHTML }}
+              {{ else }}
+                77021
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="text4">
+          <div class="title">
+            {{ if T 7039 }}
+              {{ T 7039 | safeHTML }}
+            {{ else }}
+              7039
+            {{ end }}
+          </div>
+          <div class="text">
+            <div class="circle"></div>
+            <div>
+              {{ if T 77022 }}
+                {{ T 77022 | safeHTML }}
+              {{ else }}
+                77022
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="text4">
+          <div class="title">
+            {{ if T 7040 }}
+              {{ T 7040 | safeHTML }}
+            {{ else }}
+              7040
+            {{ end }}
+          </div>
+        </div>
+        <div class="text5">
+          {{ if T 7043 }}
+            {{ T 7043 | safeHTML }}
+          {{ else }}
+            7043
+          {{ end }}
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 6L16 10M16 10L12 14M16 10H4" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+        <div class="text6">
+          <span class="text6-1">
+            {{ if T 7044 }}
+              {{ T 7044 | safeHTML }}
+            {{ else }}
+              7044
+            {{ end }}
+          </span>
+          <span class="text6-2">
+            {{ if T 7045 }}
+              {{ T 7045 | safeHTML }}
+            {{ else }}
+              7045
+            {{ end }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

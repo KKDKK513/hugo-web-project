@@ -1,0 +1,26 @@
+<footer>
+  <div class="footer-container xl:pt-[64px] lg:pt-[64px] md:pt-[40px] sm:pt-[40px]">
+    <div class="footer-row row items-center">
+      <div class="lg:col-4 mb-8 lg:mb-0 footer-part1 md:mb-2 sm:mb-2">
+        <ul class="footer-icons 2xl:justify-start xl:justify-start lg:justify-start md:justify-center sm:justify-center mb-2 xs:justify-center">
+          {{ range site.Data.footerData.footerIcons }}
+            <li>
+             {{ partial "image" (dict "Src" .url "Class" "xl:mr-[40px] md:mr-[20px] sm:mr-[20px] xs:mr-[10px]") }}
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="lg:col-4 mb-8 text-center lg:mb-0 footer-part2 md:mb-2 sm:mb-2">
+        {{ partial "image" (dict "Src" site.Data.footerData.footerImage) }}
+      </div>
+      <div class="footer-part3 lg:col-4 mb-8 2xl:text-right xl:text-right lg:text-right lg:mt-0 md:text-center sm:text-center mb-2 xs:text-center">
+        {{ if T 1058 }}
+          {{ T 1058 | safeHTML }}
+        {{ else }}
+          {{ 1058 | safeHTML }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  
+</footer>

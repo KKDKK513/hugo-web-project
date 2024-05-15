@@ -1,0 +1,14 @@
+.subscription-section{
+  .text-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3px;
+  }
+  .change-right{
+    margin-bottom: 12px;
+  }
+  .change-right-container{
+      position: relative;
+      top: 15px;
+  }
+}

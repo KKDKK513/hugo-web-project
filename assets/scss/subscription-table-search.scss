@@ -1,0 +1,94 @@
+.subscription-section{
+  .top{
+    .dataTables_filter{
+      border: 1px solid #44515C;
+      padding: 1px 14px;
+      border-radius: 6px;
+      background: #191F24;
+    }
+    .dataTables_filter label{
+      margin-bottom: 0;
+    }
+    div{
+      margin-bottom: 0;
+    }
+    >div{
+      margin-bottom: 24px;
+    }
+    #search-by{
+      border: none;
+    }
+    #search-by:focus{
+      border: none;
+      --tw-ring-color: transparent;
+    }
+    input{
+      color: #E7DED0;
+    }
+  }
+  .bottom-left{
+    select{
+      margin-left: 8px;
+      background-color: transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 19px;
+      border: 1px solid #44515C;
+      --tw-ring-color: #44515C;
+    }
+    select:focus{
+      border: 1px solid #44515C;
+    }
+    label{
+      margin-bottom: 0;
+    }
+  }
+  .bottom-right{
+    .dataTables_paginate {
+      border: 1px solid #44515C;
+      background: #191F24;
+      border-radius: 8px;
+    }
+    .dataTables_paginate .paginate_button {
+      background: none;
+      box-shadow: none;
+      color: #647582;
+      border-right: 1px solid #44515C;
+      border-radius: 0;
+      margin-left: 0;
+      padding: 8px 15px;
+    }
+    .paginate_button.next, .paginate_button.previous{
+      img{
+        display: inline-block;
+      }
+    }
+    .paginate_button.previous{
+      img{
+        transform: rotate(180deg);
+      }
+    }
+    .ellipsis +.paginate_button{
+      border-left: 1px solid #44515C;
+    }
+    .dataTables_paginate .paginate_button.current{
+      color: #9babb7!important;
+      border: none;
+      text-shadow: 0 0 10px white;
+      background: #252b31;
+    }
+    .dataTables_paginate .paginate_button.current:hover{
+      box-shadow: none;
+      background: #252b31;
+      border-right: 1px solid #44515C;
+    }
+    .dataTables_paginate .paginate_button.disabled:active{
+      background: none!important;
+      box-shadow: none!important;
+    }
+    .dataTables_paginate .paginate_button.disabled:hover{
+      background: none;
+      box-shadow: none;
+    }
+  }
+}

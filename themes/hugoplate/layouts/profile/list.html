@@ -1,0 +1,294 @@
+{{ define "main" }}
+  <section class="profile-section xl:justify-between lg:justify-center md:justify-center sm:justify-center">
+    <div class="profile-left-part xl:mr-[64px] lg:mr-[64px] md:mr-0 sm:mr-0">
+      {{ $pageLeft := .Params.pageLeft }}
+      {{ partial "image" (dict "Src" site.Data.pageImage.profile.image1 "Class" "left-avatar") }}
+      <div class="text1">
+        <div class="edit-title">
+          <span>
+            {{ if T $pageLeft.text1 }}
+              {{ T $pageLeft.text1 }}
+            {{ else }}
+              {{ $pageLeft.text1 }}
+            {{ end }}
+          </span>
+          {{ partial "image" (dict "Src" $pageLeft.icon1 "Class" "profile-avatar-edit") }}
+        </div>
+        <div class="edit-container">
+          <input type="text" id="profile-avatar-input" autocomplete="off">
+          <div class="btn-list">
+            <div id="profile-avatar-cancel" class="cancel-btn">Cancel</div>
+            <div id="profile-avatar-save" class="btn-template save-btn">Save changes</div>
+          </div>
+        </div>
+      </div>
+      <div class="text2">
+        {{ if T $pageLeft.text2 }}
+          {{ T $pageLeft.text2 }}
+        {{ else }}
+          {{ $pageLeft.text2 }}
+        {{ end }}
+        {{ partial "image" (dict "Src" $pageLeft.icon2 ) }}
+      </div>
+      {{ range $pageLeft.textArr }}
+        <div class="text3-row">
+          <div class="title">
+            {{ if T .title }}
+              {{ T .title }}
+            {{ else }}
+              {{ .title }}
+            {{ end }}
+          </div>
+          <div class="content">
+            {{ if .icon }}
+              {{ partial "image" (dict "Src" .icon ) }}
+            {{ end }}
+            {{ if T .content }}
+              {{ T .content }}
+            {{ else }}
+              {{ .content }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+    <div class="profile-right-part">
+      <div class="right-part-one">
+        <div class="title">
+          {{ if T 5001 }}
+            {{ T 5001 | safeHTML }}
+          {{ else }}
+            5001
+          {{ end }}
+        </div>
+        <div class="part-one-row">
+          <div class="text1">
+            {{ if T 5002 }}
+              {{ T 5002 | safeHTML }}
+            {{ else }}
+              5002
+            {{ end }}
+          </div>
+          <div class="text2">
+            {{ if T 55009 }}
+              {{ T 55009 | safeHTML }}
+            {{ else }}
+              55009
+            {{ end }}
+          </div>
+          <div class="text3">
+            {{ if T 5003 }}
+              {{ T 5003 | safeHTML }}
+            {{ else }}
+              5003
+            {{ end }}
+          </div>
+        </div>
+        <div class="part-one-row part-one-row1">
+          <div class="text1">
+            {{ if T 5002 }}
+              {{ T 5002 | safeHTML }}
+            {{ else }}
+              5002
+            {{ end }}
+          </div>
+          <div class="text2">
+            {{ if T 55009 }}
+              {{ T 55009 | safeHTML }}
+            {{ else }}
+              55009
+            {{ end }}
+          </div>
+          <div class="text3">
+            {{ if T 5011 }}
+              {{ T 5011 | safeHTML }}
+            {{ else }}
+              5011
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="right-part-two">
+        <div class="title">
+          {{ if T 5004 }}
+            {{ T 5004 | safeHTML }}
+          {{ else }}
+            5004
+          {{ end }}
+        </div>
+        <div class="content">
+          {{ range .Params.pageRight.contentArr }}
+            <div class="content-row">
+              <div class="title">
+                {{ if T .title }}
+                  {{ T .title | safeHTML }}
+                {{ else }}
+                  {{ .title }}
+                {{ end }}
+              </div>
+              <div class="text">
+                {{ if .frontIcon }}
+                  {{ partial "image" (dict "Src" .frontIcon "Class" "frontIcon") }}
+                {{ end }}
+                {{ if T .content }}
+                  {{ T .content | safeHTML }}
+                {{ else }}
+                  {{ .content }}
+                {{ end }}
+                {{ if .behindIcon }}
+                  {{ partial "image" (dict "Src" .behindIcon "Class" "behindIcon") }}
+                {{ end }}
+                {{ if .link }}
+                  <div class="link">
+                    {{ if T .link }}
+                      {{ T .link }}
+                    {{ else }}
+                      {{ .link }}
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="right-part-three">
+        <div class="part-title">
+          <div class="title-text">
+            {{ if T 5028 }}
+              {{ T 5028 | safeHTML }}
+            {{ else }}
+              5028
+            {{ end }}
+          </div>
+        </div>
+        <div class="part-content">
+          <table>
+            <tr class="header">
+              {{ range $e := .Params.tableHeader1 }}
+                <th style="width: {{.width}};text-align:left" >{{ .title }}</th>
+              {{ end }}
+            </tr>
+            {{ range $e := .Params.tableData1 }}
+              <tr>
+                {{ range $ee := .data }}
+                  <td class="data-td {{ if .class }} {{ .class }} {{end}}">
+                    {{ if .imageFront }}
+                      {{ partial "image" (dict "Src" .imageFront "Size" .size "Class" "imageBehind") }}
+                    {{ end }}
+                    {{ .value }}
+                    {{ if .imageBehind }}
+                      {{ partial "image" (dict "Src" .imageBehind "Size" .size "Class" "imageBehind") }}
+                    {{ end }}
+                  </td>
+                {{ end }}
+              </tr>
+            {{ end }}
+          </table>
+        </div>
+      </div>
+      <div class="right-part-three right-part-four">
+        <div class="part-title">
+          <div class="title-text">
+            {{ if T 5017 }}
+              {{ T 5017 | safeHTML }}
+            {{ else }}
+              5017
+            {{ end }}
+          </div>
+          <div class="title-link">
+            {{ if T 5018}}
+              {{ T 5018 | safeHTML }}
+            {{ else }}
+              5018
+            {{ end }}
+          </div>
+        </div>
+        <table>
+          <tr class="header">
+            {{ range $e := .Params.tableHeader2 }}
+              <th style="width: {{.width}};text-align:left" >{{ .title }}</th>
+            {{ end }}
+          </tr>
+          {{ range $e := .Params.tableData2 }}
+            <tr>
+              {{ range $ee := .data }}
+                <td class="data-td {{ if .class }} {{ .class }} {{end}}">
+                  {{ if .imageFront }}
+                    {{ partial "image" (dict "Src" .imageFront "Size" .size "Class" "imageBehind") }}
+                  {{ end }}
+                  {{ .value }}
+                  {{ if .imageBehind }}
+                    {{ partial "image" (dict "Src" .imageBehind "Size" .size "Class" "imageBehind") }}
+                  {{ end }}
+                </td>
+              {{ end }}
+            </tr>
+          {{ end }}
+          <tr class="table-footer">
+              <th colspan="3" class="th-one">
+                {{ if T 5040 }}
+                  {{ T 5040 | safeHTML }}
+                {{ else }}
+                  5040
+                {{ end }}
+                <select>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                </select>
+              </th>
+              <th colspan="4" class="th-two">
+                <div class="pagination" style="display:inline-block">
+                  <span>
+                    {{ if T 5041 }}
+                      {{ T 5041 | safeHTML }}
+                    {{ else }}
+                    5041
+                    {{ end }}
+                  </span>
+                  <span>
+                    {{ if T .Params.tablefootText1 }}
+                      {{ T .Params.tablefootText1 | safeHTML }}
+                    {{ else }}
+                      {{.Params.tablefootText1}}
+                    {{ end }}
+                  </span>
+                  <span>
+                    {{ if T 5042 }}
+                      {{ T 5042 | safeHTML }}
+                    {{ else }}
+                      5042
+                    {{ end }}
+                  </span>
+                  <span>
+                    {{ if T .Params.tablefootText2 }}
+                      {{ T .Params.tablefootText2 | safeHTML }}
+                    {{ else }}
+                      {{.Params.tablefootText2}}
+                    {{ end }}
+                  </span>
+                </div>
+                <div style="display:inline-block">
+                  <div class="foot-btn">
+                    {{ if T 5043 }}
+                      {{ T 5043 | safeHTML }}
+                    {{ else }}
+                      5043
+                    {{ end }}
+                  </div>
+                  <div class="foot-btn">
+                    {{ if T 5044 }}
+                      {{ T 5044 | safeHTML }}
+                    {{ else }}
+                      5044
+                    {{ end }}
+                  </div>
+                </div>
+              </th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+{{ end }}

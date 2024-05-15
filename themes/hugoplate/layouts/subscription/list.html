@@ -1,0 +1,309 @@
+{{ define "main" }}
+ 
+
+  <section class="subscription-section 
+    2xl:flex-nowrap
+    xl:justify-between xl:flex-nowrap
+    lg:justify-center lg:flex-nowrap
+    md:justify-center md:flex-wrap
+    sm:justify-center 
+    xs:flex-wrap">
+    <div class="subscription-left-part xl:mr-[64px] lg:mr-[64px] md:mr-0 sm:mr-0">
+      <div class="title">
+        {{ if T 6001 }}
+          {{ T 6001 | safeHTML }}
+        {{ else }}
+          6001
+        {{ end }}
+      </div>
+      <div class="echart-part">
+        <div id="subscription-echart">
+          <div class="inner">
+            {{ partial "image" (dict "Src" .Params.echartIcon) }}
+            <div id="subscription-echart-text1">
+              {{ .Params.echartTitle }}
+            </div>
+            <div class="text2">
+              {{ if T 6001 }}
+                {{ T 6001 | safeHTML }}
+              {{ else }}
+                6001
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="echart-footer">
+          {{ range $i, $e := .Params.echartData }}
+            <div class="tip-item subscription-annular-pie-item" value="{{ .value }}" name="{{ .name }}" color="{{ .color }}">
+              {{ .circle | safeHTML }}
+              <div class="issue">{{ .name }}</div>
+              <div class="value">
+                {{ .value }}
+              </div>
+            </div>
+          {{end}}
+        </div>
+      </div>
+      <div class="square-box">
+        {{ partial "image" (dict "Src" site.Data.pageImage.subscription.image1) }}
+      </div>
+    </div>
+    <div class="subscription-right-part">
+      <div class="right-part-one">
+        <div class="title">
+          {{ if T 6001 }}
+            {{ T 6001 | safeHTML }}
+          {{ else }}
+            6001
+          {{ end }}
+        </div>
+        <div class="dashboards-show justify-between ">
+          <div style="width: 320px;" class="dashboard dashboard-one 2xl:mb-0 xl:mb-0 lg:mb-[40px] md:mb-[40px] sm:mb-[40px] xs:mb-[40px]">
+            {{ range $i, $e := .Params.dashboards }}
+              <div class="dashboard-flex-part" style="flex-grow:1;">
+                <div class="title">{{ .title }}</div>
+                <div class="text">
+                  {{ if .image }}
+                    {{ partial "image" (dict "Src" .image "Size" "16x16") }}
+                    {{ end }}
+                  {{ .text }}
+                </div>
+              </div>
+            {{end}}
+          </div>
+          <div class="dashboard dashboard-two">
+            <div class="dashboard-row">
+              <div class="title">
+                {{ if T 6016 }}
+                  {{ T 6016 | safeHTML }}
+                {{ else }}
+                  6016
+                {{ end }}
+              </div>
+              <div class="text">
+                {{ if T 91001 }}
+                  {{ T 91001 | safeHTML }}
+                {{ else }}
+                  91001
+                {{ end }}
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="title">
+                {{ if T 6017 }}
+                  {{ T 6017 | safeHTML }}
+                {{ else }}
+                  6017
+                {{ end }}
+              </div>
+              <div class="text">
+                {{ .Params.dashboardTwo.text1 }}
+                <span style="color:rgba(255, 255, 255, 0.40)"> 
+                  {{ .Params.dashboardTwo.text2 }}
+                </span>
+              </div>
+            </div>
+            <div class="dashboard-row">
+              <div class="title">
+                {{ if T 6018 }}
+                  {{ T 6018 | safeHTML }}
+                {{ else }}
+                  6018
+                {{ end }}
+              </div>
+              <div class="text change-text" >
+                <div class="change-left">
+                  <span class="flex-span">
+                    {{ partial "image" (dict "Src" .Params.changeTextLeftIcon "Size" "16x16") }}
+                    {{ .Params.dashboardTwo.text3 }}
+                  </span>
+                  <span>
+                    <input class="change-text-input" value="{{.Params.dashboardTwo.text4}}">
+                    <!-- {{ .Params.dashboardTwo.text4 }} -->
+                  </span>
+                </div>
+                <div class="change-middle">
+                  {{ partial "image" (dict "Src" .Params.changeTextMiddleIcon "Size" "16x16") }}
+                </div>
+                <div class="change-right-container">
+                  <div class="change-right">
+                    <span class="flex-span">
+                      {{ partial "image" (dict "Src" .Params.changeTextRightIcon "Size" "20x20") }}
+                      {{ .Params.dashboardTwo.text5 }}
+                    </span>
+                    <span>
+                      <!-- {{ .Params.dashboardTwo.text6 }} -->
+                      <input class="change-text-input" value="{{.Params.dashboardTwo.text6}}">
+                    </span>
+                  </div>
+                  <div class="text-row">
+                    <div class="text-left">{{ .Params.dashboardTwo.text7 }}
+                    </div>
+                    <div>
+                      <span style="color:#E7DED0">{{ .Params.dashboardTwo.text8 }}</span>
+                      <span>{{ .Params.dashboardTwo.text9 }}</span>
+                      <span style="color: #03FF85;">{{ .Params.dashboardTwo.text10 }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-row">
+              <div class="button">
+                {{ if T 6008 }}
+                  {{ T 6008 | safeHTML }}
+                {{ else }}
+                  6008
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-part-two">
+        <div class="part-content">
+          <table id="myTable">
+            <thead>
+              <tr class="header">
+                {{ range $e := .Params.tableHeader }}
+                  <th style="width: {{.width}};text-align:left" >{{ .title }}</th>
+                {{ end }}
+              </tr>
+            </thead>
+            <tbody>
+              {{ range $e := .Params.tableData }}
+                <tr>
+                  {{ range $ee := .data }}
+                    <td class="data-td {{ if .class }} {{ .class }} {{end}}">
+                      {{ if .imageFront }}
+                        {{ partial "image" (dict "Src" .imageFront "Size" .size "Class" "imageFront") }}
+                      {{ end }}
+                      {{ .value }}
+                      {{ if .imageBehind }}
+                        {{ partial "image" (dict "Src" .imageBehind "Size" .size "Class" "imageBehind") }}
+                      {{ end }}
+                    </td>
+                  {{ end }}
+                </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="right-part-three">
+        <div class="text1">
+          {{ if T 6032 }}
+            {{ T 6032 | safeHTML }}
+          {{ else }}
+            6032
+          {{ end }}
+        </div>
+        <div class="text2">
+          {{ if T 6033 }}
+            {{ T 6033 | safeHTML }}
+          {{ else }}
+            6033
+          {{ end }}
+        </div>
+        {{ range $e := .Params.arrData }}
+          <div class="text3">
+            <div class="circle" style="background-color: {{ .color  }}"></div>
+            <div class="name">
+              {{ if T .name }}
+                {{ T .name | safeHTML }}
+              {{ else }}
+                {{ .name }}
+              {{ end }}
+            </div>
+            <div class="value">
+              {{ .value }}
+            </div>
+          </div>
+        {{ end }}
+        <div class="text4">
+          <div class="title">
+            {{ if T 6034 }}
+              {{ T 6034 | safeHTML }}
+            {{ else }}
+              6034
+            {{ end }}
+          </div>
+          <div class="text">
+            <div class="circle"></div>
+            <div>
+              {{ if T 6101 }}
+                {{ T 6101 | safeHTML }}
+              {{ else }}
+                6101
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="text4">
+          <div class="title">
+            {{ if T 6035 }}
+              {{ T 6035 | safeHTML }}
+            {{ else }}
+              6035
+            {{ end }}
+          </div>
+          <div class="text">
+            <div class="circle"></div>
+            <div>
+              {{ if T 6102 }}
+                {{ T 6102 | safeHTML }}
+              {{ else }}
+                6102
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="text4">
+          <div class="title">
+            {{ if T 6036 }}
+              {{ T 6036 | safeHTML }}
+            {{ else }}
+              6036
+            {{ end }}
+          </div>
+          <div class="text">
+            <div class="circle"></div>
+            <div>
+              {{ if T 6103 }}
+                {{ T 6103 | safeHTML }}
+              {{ else }}
+                6103
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="text5">
+          {{ if T 6037 }}
+            {{ T 6037 | safeHTML }}
+          {{ else }}
+            6037
+          {{ end }}
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 6L16 10M16 10L12 14M16 10H4" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+        <div class="text6">
+          <span class="text6-1">
+            {{ if T 6038 }}
+              {{ T 6038 | safeHTML }}
+            {{ else }}
+              6038
+            {{ end }}
+          </span>
+          <span class="text6-2">
+            {{ if T 6039 }}
+              {{ T 6039 | safeHTML }}
+            {{ else }}
+              6039
+            {{ end }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

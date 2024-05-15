@@ -1,0 +1,197 @@
+.feature-section{
+    max-width: 1280px;
+    display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // padding: 0 32px;
+    overflow-x: hidden;
+    padding-top: 80px;
+    margin: 0 auto;
+    .download-part{
+        width: 240px;
+        flex-shrink: 0;
+        // margin-right: 80px;
+        .header-img{
+            height: 120px;
+            width: 120px;
+            margin: 0 auto;
+            // background-color: #F1EBE1;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .text{
+            color: #E7DED0;
+            text-align: center;
+            font-family: Roboto Condensed;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin: 24px auto;
+        }
+        .download-btn{
+            width: 160px;
+            gap: 8px;
+            color: #062A22;
+            font-family: Roboto Condensed;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            display: flex;
+            height: 56px;
+            padding: 8px 20px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #86EABA 0%, #53B083 100%);
+            box-shadow: 0px 2px 4px 0px rgba(16, 24, 40, 0.40), 0px 1px 0px 0px rgba(255, 255, 255, 0.25) inset;
+            &:hover{
+                background: linear-gradient(0deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 100%), linear-gradient(180deg, #86EABA 0%, #53B083 100%);
+                background-blend-mode: plus-lighter, normal;
+                box-shadow: 0px 2px 4px 0px rgba(16, 24, 40, 0.40), 0px 1px 0px 0px rgba(255, 255, 255, 0.25) inset;
+            }
+            .text1{
+                color: #062A22;
+                font-family: Roboto Condensed;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px; /* 133.333% */
+            }
+            .text2{
+                color: #062A22;
+                font-family: Roboto Condensed;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px; /* 120% */
+            }
+        }
+    }
+    .cards-part{
+        flex-grow: 1;
+        padding: 0 10px;
+        .cards-part-title{
+            width: fit-content;
+            position: relative;
+            margin: 0 auto;
+            font-family: Roboto Condensed;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 38px;
+            background: linear-gradient(45deg, #39A0FF 0%, #8FFF85 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 16px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .feature-circle1{
+            position: absolute;
+            width: 1000px;
+            // width: 100%;
+            height: 1000px;
+            flex-shrink: 0;
+            top: -465px;
+            left: calc(50% - 500px);
+            border-radius: 1000px;
+            // background: radial-gradient(30.53% 45.87% at 50% 50%, rgba(3, 255, 133, 0.13) 0%, rgba(3, 255, 133, 0.03) 41.67%, rgba(3, 255, 133, 0.00) 84.38%);
+            background: radial-gradient(50% 50% at 50% 50%,rgba(3, 255, 133, 0.13) 0%,rgba(3, 255, 133, 0.03) 41.67%,rgba(3, 255, 133, 0) 84.38%
+  );
+        }
+        .feature-circle2-container{
+
+        }
+        .feature-circle2{
+            width: 1176px;
+            height: 719px;
+            position: absolute;
+            z-index: -5;
+            // width: 1132px;
+            // // width: 100%;
+            // height: 612px;
+            // flex-shrink: 0;
+            // left: -458px;
+            left: calc(50% - 610px);
+            top: -53px;
+            background: url("/images/Ellipse7.svg");
+            background-repeat: no-repeat;
+            // // border-radius: 1132px;
+            // border-radius: 1132px;
+            // border: 1px solid rgba(3, 255, 133, 0.26);
+            // background: radial-gradient(10.34% 42.05% at 50% 0%, rgba(3, 255, 133, 0.16) 0%, rgba(3, 255, 133, 0.02) 50%, rgba(3, 255, 133, 0.00) 100%);
+            // box-shadow: 0px -1px 50px 0px rgba(3, 255, 133, 0.08);
+        }
+        .cards-part-container{
+            max-width: 880px;
+            padding: 32px;
+            gap: 40px;
+            margin: 0 auto;
+            border-radius: 16px;
+            margin-bottom: 56px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            .container-title{
+                color:  #E7DED0;
+                /* EN/Regular/14 */
+                font-family: Roboto Condensed;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px; /* 142.857% */
+                margin-bottom: 40px;
+                word-break: break-all;
+            }
+            .range-area{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                // justify-content: space-between;
+                .range-item{
+                    width: 30%;
+                    min-width: 150px;
+                    text-align: center;
+                    .black-square{
+                        width: 64px;
+                        height: 64px;
+                        border-radius: 16px;
+                        // background: #191F24;
+                        margin: 0 auto;
+                        margin-bottom: 16px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .item-text1{
+                        color: #E7DED0;
+                        text-align: center;
+                        /* EN/Bold/16 */
+                        font-family: Roboto Condensed;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 24px; /* 150% */
+                    }
+                    .item-text2{
+                        color: #647582;
+                        text-align: center;
+                        /* EN/Regular/14 */
+                        font-family: Roboto Condensed;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 20px; /* 142.857% */
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+        .cards-part-container:nth-last-child(1){
+            margin-bottom: 80px;
+        }
+    }
+}

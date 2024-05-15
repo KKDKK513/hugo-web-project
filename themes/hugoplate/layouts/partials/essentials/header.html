@@ -1,0 +1,322 @@
+<header
+  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
+  <nav class="navbar container 2xl:pl-[32px] 2xl:pr-[88px] md:pr-[20px] sm:pl-[20px] pr-[20px] xs:pl-[20px] pr-[20px]">
+    <!-- logo -->
+    <div class="navbar-left">
+      <!-- /navbar toggler -->
+      <div class="order-0">
+        <!-- navbar brand/logo -->
+        <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
+          {{ partial "logo" }}
+        </a>
+      </div>
+      <ul 
+        id="nav-menu"
+        class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:mr-[20px] lg:pb-0 xl:mr-[32px]">
+
+        {{ $currentPage := . }}
+        {{ range site.Menus.main.ByWeight }}
+          {{ $menuURL := .URL | absLangURL }}
+          {{ $pageURL:= $currentPage.Permalink | absLangURL }}
+          {{ $active := eq $menuURL $pageURL }}
+          {{ if .HasChildren }}
+          <div class="nav-item nav_item nav-item-haschild nav-dropdown group relative">
+            <a href="{{ $menuURL }}" class="nav_item nav_item-title" title="{{ .Name }}">
+              {{ if T .Name }}
+                {{ T .Name | safeHTML }} 
+              {{ else }}
+                {{ .Name | safeHTML }} 
+              {{ end }} 
+              {{ with .Children }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {{ end }}
+            </a>
+            <div class="nav_sub">
+              <span class="nav_child"></span>
+              {{- range .Children }}
+                {{ $childURL := .URL | absLangURL }}
+                {{ $active := eq $childURL $pageURL }}
+                <a
+                  class="nav-dropdown-link {{ if $active }}
+                    active
+                  {{- end -}}"
+                  {{ if findRE `^http` .URL }}
+                    target="_blank" rel="noopener"
+                  {{ end }}
+                  href="{{- if findRE `^#` .URL -}}
+                    {{- if not $.IsHome -}}
+                      {{- site.Home.RelPermalink -}}
+                    {{- end }}
+                    {{- .URL -}}
+                  {{- else -}}
+                    {{- .URL | relLangURL -}}
+                  {{- end -}}">
+                  {{ if T .Name }}
+                    {{ T .Name | safeHTML }} 
+                  {{ else }}
+                    {{ .Name | safeHTML }} 
+                  {{ end }}
+                </a>
+              {{- end }}
+          </div>
+          {{ else }}
+            <li class="nav-item">
+              <a
+                class="nav-link {{ if $active }}active{{- end -}}"
+                {{ if findRE `^http` .URL }}
+                  target="_blank" rel="noopener"
+                {{ end }}
+                href="{{- if findRE `^#` .URL -}}
+                  {{- if not $.IsHome -}}
+                    {{- site.Home.RelPermalink -}}
+                  {{- end }}{{- .URL -}}
+                {{- else -}}
+                  {{- .URL | relLangURL -}}
+                {{- end -}}"
+                >
+                {{ if T .Name }}
+                  {{T .Name | safeHTML }}
+                {{ else }}
+                  {{ .Name | safeHTML }}
+                {{ end }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  
+     
+   
+    <div class="navbar-right hidden order-1 ml-auto items-center lg:flex md:order-2 lg:ml-0">
+      <!-- {{ with site.Params.search }}
+        {{ if .enable }}
+          <button
+            aria-label="search"
+            class="border-border text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white"
+            data-target="search-modal">
+            <i class="fa-solid fa-search"></i>
+          </button>
+        {{ end }}
+      {{ end }} -->
+          
+      {{ partial "components/language-switcher" (dict "Context" . "Class" "language-select pl-2 py-1 dark:bg-darkmode-theme-light") }}
+      <!-- {{ partial "components/theme-switcher" (dict "Class" "mr-5") }} -->
+
+
+      <!-- navigation btn -->
+      <!-- {{ if site.Params.navigation_button.enable }}
+        <a
+          href="{{ site.Params.navigation_button.link | relLangURL }}"
+          class="btn btn-outline-primary btn-sm hidden lg:inline-block">
+          {{ site.Params.navigation_button.label }}
+        </a>
+      {{ end }} -->
+      <div class="header-right">
+        <div class="menu-btn 2xl:mr-[32px] xl:mr-[32px] lg:mr-[32px] md:mr-[20px] sm:mr-[20px] xs:mr-[10px]">
+          <div id="diamond-select">
+            <img src="/images/diamond.svg" class="selectIcon2" alt="">
+            <!-- {{ partial "image" (dict "Src" "images/diamond.svg" "Class"  "selectIcon2") }} -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="diamond-option-area">
+              {{ range site.Params.textalert }}
+                <div class="language-option-row diamond-option-row" icon="{{.icon}}">
+                  <!-- {{ partial "image" (dict "Src" .icon) }} -->
+                  <img src="/{{.icon}}" alt="">
+                  {{ .name }}
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="menu-btn">
+          <div class="btn-template alert-btn">
+            {{ if T 1007 }}
+              {{ T 1007 | safeHTML }} 
+            {{ else }}
+              {{ 1007 | safeHTML }} 
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+   <!-- navbar toggler 折叠侧边栏-->
+   <div class="cursor-pointer sm:sm-menu-folder">
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="nav_close order-3 flex md:ml-[20px] items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <div>
+        <svg id="show-button" style="margin-right: 15px;" class="h-6 fill-current block icon" viewBox="0 0 20 20">
+          <title>Menu Open</title>
+          <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+        </svg>
+        <svg id="hide-button" style="margin-right: 15px;" class="h-6 fill-current hidden icon" viewBox="0 0 20 20">
+          <title>Menu Close</title>
+          <polygon
+            points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+            transform="rotate(45 10 10)"></polygon>
+        </svg>
+      </div>
+    </label>
+    <div id="nav-menu-folder"  class="
+      2xl:w-300 xl:w-300 lg:w-300 md:w-300 sm:w-full xs:w-full
+      2xl:top-20 xl:top-20 lg:top-20 md:top-20 sm:top-0 xs:top-0 
+      ">
+      <div class="folder-box">
+        <div class="folder-box-title flex md:hidden">
+          <div>
+            <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
+              {{ partial "logo" }}
+            </a>
+          </div>
+          <svg id="sm-folder-close" class="fill-current" viewBox="0 0 20 20">
+            <title>Menu Close</title>
+            <polygon
+              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+              transform="rotate(45 10 10)"></polygon>
+          </svg>
+        </div>
+        <ul>
+          {{ $currentPage := . }}
+          {{ range site.Menus.main }}
+            {{ $menuURL := .URL | absLangURL }}
+            {{ $pageURL:= $currentPage.Permalink | absLangURL }}
+            {{ $active := eq $menuURL $pageURL }}
+            {{ if .HasChildren }}
+              <div class="nav-item nav_item nav-item-haschild nav-dropdown group relative">
+                <a href="{{ $menuURL }}" class="nav_item nav_item-title" title="{{ .Name }}">
+                  {{ if T .Name }}
+                    {{ T .Name | safeHTML }} 
+                  {{ else }}
+                    {{ .Name | safeHTML }} 
+                  {{ end }}
+                  {{ with .Children }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {{ end }}
+                </a>
+                <div class="nav_sub">
+                  <span class="nav_child"></span>
+                  {{- range .Children }}
+                    {{ $childURL := .URL | absLangURL }}
+                    {{ $active := eq $childURL $pageURL }}
+                    <a
+                      class="nav-dropdown-link {{ if $active }}
+                        active
+                      {{- end -}}"
+                      {{ if findRE `^http` .URL }}
+                        target="_blank" rel="noopener"
+                      {{ end }}
+                      href="{{- if findRE `^#` .URL -}}
+                        {{- if not $.IsHome -}}
+                          {{- site.Home.RelPermalink -}}
+                        {{- end }}
+                        {{- .URL -}}
+                      {{- else -}}
+                        {{- .URL | relLangURL -}}
+                      {{- end -}}">
+                      {{ if T .Name }}
+                        {{ T .Name | safeHTML }} 
+                      {{ else }}
+                        {{ .Name | safeHTML }} 
+                      {{ end }}
+                    </a>
+                  {{- end }}
+                </div>
+              </div>
+            {{ else }}
+              <li class="nav-item">
+                <a
+                  class="nav-link {{ if $active }}active{{- end -}}"
+                  {{ if findRE `^http` .URL }}
+                    target="_blank" rel="noopener"
+                  {{ end }}
+                  href="{{- if findRE `^#` .URL -}}
+                    {{- if not $.IsHome -}}
+                      {{- site.Home.RelPermalink -}}
+                    {{- end }}{{- .URL -}}
+                  {{- else -}}
+                    {{- .URL | relLangURL -}}
+                  {{- end -}}"
+                  >
+                  {{ if T .Name }}
+                    {{T .Name | safeHTML }}
+                  {{ else }}
+                    {{ .Name | safeHTML }}
+                  {{ end }}
+                  </a
+                >
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+        <div class="folder-box-footer">
+          {{ partial "components/language-switcher" (dict "Context" . "Class" "language-select pl-2 py-1 dark:bg-darkmode-theme-light") }}
+          <div id="diamond-select-sider">
+            <div class="diamond-select1-text">111</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="diamond-option-area">
+              {{ range site.Params.textalert }}
+                <div class="language-option-row diamond-option-row" icon="{{.icon}}">
+                  <!-- {{ partial "image" (dict "Src" .icon) }} -->
+                  <img src="/{{.icon}}" alt="">
+                  {{ .name }}
+                </div>
+              {{ end }}
+            </div>
+          </div>
+          <div class="menu-btn">
+            <div class="btn-template alert-btn1">
+              {{ if T 1007 }}
+                {{ T 1007 | safeHTML }} 
+              {{ else }}
+                {{ 1007 | safeHTML }} 
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+</header>
+<script>
+  var header = document.getElementsByTagName('header')
+  
+  function scrollFun(func, wait, mustRun) {
+    var timeout,
+    startTime = new Date();
+    return function() {
+    var context = this,
+    args = arguments,
+    curTime = new Date();
+    clearTimeout(timeout);
+    // 如果达到了规定的触发时间间隔，触发 handler
+    if(curTime - startTime >= mustRun){
+      func.apply(context,args);
+      startTime = curTime;
+      }else{ // 没达到触发间隔，重新设定定时器
+        timeout = setTimeout(func, wait);
+      }
+    };
+  };
+  // 实际想绑定在 scroll 事件上的 handler
+  function realFunc(){
+    if (document.documentElement.scrollTop || document.body.scrollTop == 0) header[0].style.backgroundColor = "transparent"
+    if(document.documentElement.scrollTop || document.body.scrollTop != 0) {
+      if(header[0]) {
+        header[0].style.backgroundColor = "rgba(0,0,0)"
+      }
+    }
+  }
+  // 采用了节流函数 减少监听滚动的资源消耗
+  window.addEventListener('scroll',scrollFun(realFunc,500,100))
+</script>

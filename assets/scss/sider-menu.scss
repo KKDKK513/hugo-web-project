@@ -1,0 +1,129 @@
+
+.header{
+  .navbar-right{
+    // display: block;
+  }
+}
+.banner-rigntImg{
+  max-height: 100%;
+  z-index: -10;
+  // position: absolute;
+  right: 0;
+  width: auto;
+}
+#nav-menu-folder{
+  padding: 0;
+  background-color: rgba(0,0,0,0.5);
+  .folder-box{
+    background-color: #14181C;
+    padding: 20px 25px;
+    padding-top: 0;
+    .folder-box-title{
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      height: 80px;
+      #sm-folder-close{
+        color: #9BABB7;
+        width: 25px;
+      }
+    }
+    .nav-link{
+      color: #E7DED0;
+    }
+    >ul{
+      margin-left: -10px;
+    }
+    .nav-item{
+      padding-left: 10px;
+    }
+    .nav-item:hover{
+      background-color: rgba(56, 58, 57, 0.72);
+    }
+    .folder-box-footer{
+      margin-top: 20px;
+      border-top: 2px solid rgba(46, 51, 49, 0.92);
+      padding-top: 20px;
+      #language-select{
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: auto;
+        margin-right: 0;
+        color: #E7DED0;
+        .language-option-area{
+          width: 100%;
+          position: relative;
+          border: none;
+          left: 0;
+          top: 0;
+          .language-option-row{
+            padding: 10px 12px;
+            a:hover{
+              color: inherit;
+            }
+          }
+        }
+      }
+      #diamond-select-sider{
+        display: flex;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: space-between;
+        color: #E7DED0;
+        .diamond-option-area{
+          width: 100%;
+          position: relative;
+          border: none;
+          left: 0;
+          top: 0;
+          .diamond-option-row{
+            color: #E7DED0!important;
+          }
+        }
+      }
+      .language-select-open, .diamond-select-open{
+        >svg{
+          transform: rotate(180deg);
+        }
+      }
+      .alert-btn1{
+        margin-top: 20px;
+      }
+    }
+  }
+}
+.subscription-section{
+  #myTable{
+    .data-td {
+      word-break: break-all;
+    }
+  }
+  .flex-span{
+    flex-shrink: 0;
+  }
+  .change-text{
+    flex-wrap: nowrap!important;
+  }
+  .change-left, .change-right{
+    align-items: center!important;
+  }
+  .change-text-input{
+      border: none;
+      border-radius: 3px;
+      padding: 5px;
+      background-color: transparent;
+      color: inherit;
+      width: 50px;
+      text-align: right;
+      &:focus{
+        --tw-ring-color: transparent;
+      }
+  }
+}
+.header .navbar-right{
+  flex-wrap: wrap;
+}
+.dataTables_wrapper .dataTables_paginate{
+  margin-top: 0;
+}

@@ -1,0 +1,51 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "1001"
+url = "introduction/"
+weight = 1
+
+[[main]]
+name = "1002"
+url = "feature/"
+weight = 2
+
+[[main]]
+name = "1003"
+url = "subscription/"
+weight = 3
+
+[[main]]
+name = "1004"
+url = "stake/"
+weight = 4
+
+[[main]]
+name = "1005"
+url = "profile/"
+weight = 5
+
+[[main]]
+weight = 6
+name = "1006"
+url = "gitbook/"
+hasChildren = true
+
+
+
+# footer menu
+[[footer]]
+name = "About"
+url = "about/"
+weight = 1
+
+[[footer]]
+name = "Elements"
+url = "elements/"
+weight = 2
+
+[[footer]]
+name = "Privacy Policy"
+url = "privacy-policy/"
+weight = 3

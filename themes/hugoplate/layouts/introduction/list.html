@@ -1,0 +1,321 @@
+{{ define "main" }}
+  <section class="introduction-section 
+    2xl:flex-nowrap 2xl:justify-between 2xl:px-[32px] 
+    xl:flex-nowrap xl:justify-between xl:px-[32px] 
+    lg:flex-nowrap lg:justify-between lg:px-[32px] 
+    md:flex-wrap md:justify-center md:px-[32px] 
+    sm:flex-wrap sm:justify-center sm:px-[10px] 
+    xs:flex-wrap xs:px-[10px] xs:justify-center">
+    <div class="introduction-left-part xl:mr-[64px] lg:mr-[64px] md:mr-0 sm:mr-0">
+      <div class="title">
+        {{ if T 2001 }}
+          {{ T 2001 | safeHTML }}
+        {{ else }}
+          2001
+        {{ end }}
+      </div>
+      <div class="part1-left-row">
+        <div class="title">
+          {{ if T 2002 }}
+            {{ T 2002 | safeHTML }}
+          {{ else }}
+            2002
+          {{ end }}
+        </div>
+        <div class="text">{{.Params.leftPart.text1}}</div>
+      </div>
+      <div class="part1-left-row">
+        <div class="title">
+          {{ if T 2003 }}
+            {{ T 2003 | safeHTML }}
+          {{ else }}
+            2003
+          {{ end }}
+        </div>
+        <div class="text">{{.Params.leftPart.text2}}</div>
+      </div>
+      <div class="part1-left-row">
+        <div class="title">
+          {{ if T 2004 }}
+            {{ T 2004 | safeHTML }}
+          {{ else }}
+            2004
+          {{ end }}
+        </div>
+        <div class="text">{{.Params.leftPart.text3}}</div>
+      </div>
+      <div class="part1-left-row">
+        <div class="title">
+          {{ if T 2005 }}
+            {{ T 2005 | safeHTML }}
+          {{ else }}
+            2005
+          {{ end }}
+        </div>
+        <div class="text">
+          {{ partial "image" (dict "Src" "/images/USDT.png") }}
+          <div>
+            {{.Params.leftPart.text4}}
+          </div>
+        </div>
+      </div>
+      <div class="part1-left-row">
+        <div class="title">
+          {{ if T 2006 }}
+            {{ T 2006 | safeHTML }}
+          {{ else }}
+            2006
+          {{ end }}
+        </div>
+        <div class="text">
+          {{ partial "image" (dict "Src" "/images/USDT.png") }}
+          <div>
+            {{.Params.leftPart.text5}}
+          </div>
+        </div>
+      </div>
+      <div class="part1-left-row">
+        <div class="title"> 
+          {{ if T 2007 }}
+            {{ T 2007 | safeHTML }}
+          {{ else }}
+            2007
+          {{ end }}
+        </div>
+        <div class="text">
+          {{ partial "image" (dict "Src" .Params.leftPart.icon) }}
+          <div>
+            {{.Params.leftPart.text6}}
+          </div>
+        </div>
+      </div>
+      <div class="foot-link">
+        <div>
+          {{ if T 92001 }}
+            {{ T 92001 | safeHTML }}
+          {{ else }}
+            92001
+          {{ end }}
+        </div>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+        </svg> -->
+      </div>
+      <div class="square-box">
+        {{ partial "image" (dict "Src" site.Data.pageImage.introduction.image1) }}
+        <!-- {{ site.Data.pageImage.introduction.image1 }} -->
+      </div>
+    </div>
+    <div class="introduction-right-part">
+      <div class="right-part-one justify-between md:justify-center sm:justify-center">
+        <div class="part-one-texts">
+          <div class="row1">
+            {{ if T 2008 }}
+              {{ T 2008 | safeHTML }}
+            {{ else }}
+              2008
+            {{ end }}
+          </div>
+          <div class="row2">
+            {{ if T 2009 }}
+              {{ T 2009 | safeHTML }}
+            {{ else }}
+              2009
+            {{ end }}
+          </div>
+          <div class="middle-btn">
+            {{ if T 2010 }}
+              {{ T 2010 | safeHTML }}
+            {{ else }}
+              2010
+            {{ end }}
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+            </svg> -->
+          </div>
+        </div>
+        <div class="square-box2 2xl:ml-[40px] xl:ml-[40px] lg:ml-[40px] md:ml-[40px] sm:ml-[40px] xs:ml-0">
+          {{ partial "image" (dict "Src" site.Data.pageImage.introduction.image2) }}
+        </div>
+      </div>
+      <div class="right-part-two">
+        <div class="part-title">
+          {{ if T 2011 }}
+            {{ T 2011 | safeHTML }}
+          {{ else }}
+            2011
+          {{ end }}
+        </div>
+        <div class="part-content justify-between md:justify-between sm:justify-center xs:justify-center">
+          <div class="echart-part mr-[40px] md:mb-[20px] sm:mb-[20px] xs:mr-0 mb-[20px]">
+            <div id="circle-echart">
+              <div class="inner">
+                {{ partial "image" (dict "Src" "/images/annularPieIcon.svg") }}
+                <!-- <div id="circle-echart-text1"></div> -->
+                <div id="circle-echart-text1">
+                  {{ .Params.echartTitle }}
+                </div>
+                <div class="text2">
+                  {{ if T 2012 }}
+                    {{ T 2012 | safeHTML }}
+                  {{ else }}
+                    2012
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+            <div class="echart-footer">
+              {{ range $i, $e := .Params.echartData }}
+                <div class="tip-item annular-pie-item" value="{{ .value }}" name="{{ .name }}" color="{{ .color }}">
+                  {{ .circle | safeHTML }}
+                  <div class="issue">{{ .name }}</div>
+                  <div class="value">
+                    {{ .value }}
+                  </div>
+                </div>
+              {{end}}
+              <!-- <div class="tip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <circle cx="4" cy="4" r="4" fill="#03FF85"/>
+                </svg>
+                <div class="issue">Issue 1</div>
+                <div class="value">
+                  100,000,000
+                </div>
+              </div> -->
+              <!-- <div class="tip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <circle cx="4" cy="4" r="4" fill="#FAD553"/>
+                </svg>
+                <div class="issue"></div>
+                <div class="value">60,000,000</div>
+              </div>
+              <div class="tip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <circle cx="4" cy="4" r="4" fill="#FF1E43"/>
+                </svg>
+                <div class="issue">Issue 3</div>
+                <div class="value">40,000,000</div>
+              </div> -->
+            </div>
+          </div>
+          <div class="text-part">
+            <div class="title">
+              {{ if T 2016 }}
+                {{ T 2016 | safeHTML }}
+              {{ else }}
+                2016
+              {{ end }}
+            </div>
+            <div class="part-btn">
+              {{ if T .Params.btnText }}
+                {{ T .Params.btnText | safeHTML }}
+              {{ else }}
+                {{.Params.btnText}}
+              {{ end }}
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+              </svg> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-part-three">
+        <div class="text1">
+          2017
+        </div>
+        <div class="text2">
+          {{ if T 2018 }}
+            {{ T 2018 | safeHTML }}
+          {{ else }}
+            2018
+          {{ end }}
+        </div>
+        <div class="text3">
+          <div>
+            {{ if T 2019 }}
+              {{ T 2019 | safeHTML }}
+            {{ else }}
+              2019
+            {{ end }}
+          </div>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+        <div class="text4">
+          {{ if T 2020 }}
+            {{ T 2020 | safeHTML }}
+          {{ else }}
+            2020
+          {{ end }}
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+        <div class="text5">
+          {{ if T 2021 }}
+            {{ T 2021 | safeHTML }}
+          {{ else }}
+            2021
+          {{ end }}
+        </div>
+      </div>
+      <div class="right-part-three right-part-four">
+        <div class="text1">
+          {{ if T 2022 }}
+            {{ T 2022 | safeHTML }}
+          {{ else }}
+            2022
+          {{ end }}
+        </div>
+        <div class="text2">
+          {{ if T 2023 }}
+            {{ T 2023 | safeHTML }}
+          {{ else }}
+            2023
+          {{ end }}
+        </div>
+        <div class="text3">
+          <div>
+            {{ if T .Params.footText }}
+              {{ T .Params.footText | safeHTML }}
+            {{ else }}
+              {{.Params.footText}}
+            {{ end }}
+          </div>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+        <div class="text4 disabled-btn">
+          {{ if T 2024 }}
+            {{ T 2024 | safeHTML }}
+          {{ else }}
+            2024
+          {{ end }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 6L12 10L8 14" stroke="#44515C"/>
+          </svg>
+        </div>
+        <div class="text5" style="margin-bottom: 24px">
+          {{ if T 2025 }}
+            {{ T 2025 | safeHTML }}
+          {{ else }}
+            2025
+          {{ end }}
+        </div>
+        <div class="text4">
+          {{ if T 2026 }}
+            {{ T 2026 | safeHTML }}
+          {{ else }}
+            2026
+          {{ end }}
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 6L12 10L8 14" stroke="#03FF85"/>
+          </svg> -->
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

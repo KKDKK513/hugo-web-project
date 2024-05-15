@@ -1,0 +1,46 @@
+
+################ English language ##################
+[en-us]
+languageName = "English"
+languageCode = "gb"
+contentDir = "content/en-us"
+weight = 1
+  [en-us.params]
+  languageUrl = "en-us"
+
+################ Japan language ##################
+[ja-jp]
+languageName = "日本語"
+languageCode = "jp"
+contentDir = "content/ja-jp"
+weight = 2
+  [ja-jp.params]
+  languageUrl = "ja-jp"
+
+################ Korea language ##################
+[ko-kr]
+languageName = "한국어"
+languageCode = "kr"
+contentDir = "content/ko-kr"
+weight = 3
+  [ko-kr.params]
+  languageUrl = "ko-kr"
+
+################ TW language (Province of Chine) ##################
+[zh-tw]
+languageName = "中文繁"
+languageCode = "tw"
+contentDir = "content/zh-tw"
+weight = 4
+  [zh-tw.params]
+  languageUrl = "zh-tw"
+
+################ Chinese language ##################
+[zh-cn]
+languageName = "中文简"
+languageCode = "cn"  
+contentDir = "content/zh-cn"
+weight = 5 
+  [zh-cn.params]
+  languageUrl = "zh-cn"
+

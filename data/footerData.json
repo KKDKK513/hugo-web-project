@@ -1,0 +1,20 @@
+{
+  "footerImage": "images/footerImage.svg",
+  "footerIcons": [
+    {
+      "url": "images/footIcon1.svg"
+    },
+    {
+      "url": "images/footIcon2.svg"
+    },
+    {
+      "url": "images/footIcon3.svg"
+    },
+    {
+      "url": "images/footIcon4.svg"
+    },
+    {
+      "url": "images/footIcon5.svg"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "introduction": {
+    "image1": "images/introductionImage1.png",
+    "image2": "images/introductionImage2.png"
+  },
+  "feature": {
+    "image1": "images/featureImage1.png"
+  },
+  "subscription": {
+    "image1": "images/featureImage1.png"
+  },
+  "stake": {
+    "image1": "images/featureImage1.png"
+  },
+  "profile": {
+    "image1": "images/avatar1.png"
+  }
+}

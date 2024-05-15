@@ -1,0 +1,97 @@
+<!-- Language List -->
+{{ $class := .Class }}
+{{ $context := .Context }}
+{{ $pageLang := $context.Lang }}
+{{ $base:= urls.Parse site.Home.Permalink }}
+{{ $siteLanguages := site.Home.AllTranslations }}
+{{ $pageLink := replace (replace $context.RelPermalink (add $pageLang "/") "") $base.Path "/" }}
+{{ $languages := site.Languages}}
+  <div id="language-select" class="2xl:mr-[32px] xl:mr-[32px] lg:mr-[32px] md:mr-[20px] sm:mr-[20px] xs:mr-[5px]">
+    <span>
+      {{ site.Language.LanguageName }}
+      <!-- {{ if eq $pageLang "en-us" }}
+        EN
+      {{ else if eq $pageLang "ja-jp" }}
+        日本語
+      {{ else if eq $pageLang "ko-kr" }}
+        한국어
+      {{ else if eq $pageLang "zh-tw" }}
+        中文繁
+      {{ else }}
+        中文简
+      {{ end }} -->
+    </span>
+    <svg style="margin-left:8px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M5 7.5L10 12.5L15 7.5" stroke="#9BABB7" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="language-option-area">
+      {{ range $i, $e:= $languages }}
+        <div class="language-option-row">
+          {{ $languageChangeUrl := urls.JoinPath (cond (eq .Params.languageUrl "en-us") "" .Params.languageUrl )  $pageLink }}
+          <!-- {{$languageChangeUrl }} -->
+          {{ if eq (string $pageLang) (string .Params.languageUrl) }}
+            <a href="{{ $languageChangeUrl | absURL }}">
+              <span class="fi fi-{{ .LanguageCode }} fis"></span>
+              <span style="text-decoration: underline;">{{ .LanguageName }}</span>
+            </a>
+          {{ else }}
+            <a href="{{ $languageChangeUrl | absURL }}">
+              <div>
+                <span class="fi fi-{{ .LanguageCode }} fis"></span>
+                {{ .LanguageName }}
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+      <!-- {{ range $i, $e:= $siteLanguages }}
+        <div class="language-option-row">
+          {{ if eq (string $pageLang) (string .Language) }}
+            {{ if eq .Language.LanguageName "中文简" }}
+              <span class="fi fi-cn fis"></span>
+            {{else if eq .Language.LanguageName "English" }}
+              <span class="fi fi-gb fis"></span>
+            {{ else }}
+              <span class="fi fi-{{ .Language }} fis"></span>
+            {{ end }} 
+                {{ .Language.LanguageName }}
+          {{ else }}
+            <div>
+              {{ if eq .Language.LanguageName "中文简" }}
+                <span class="fi fi-cn fis"></span>
+              {{else if eq .Language.LanguageName "English" }}
+                <span class="fi fi-gb fis"></span>
+              {{ else }}
+                <span class="fi fi-{{ .Language }} fis"></span>
+              {{ end }} 
+              {{ .Language.LanguageName }}
+            </div>
+          {{ end }}
+        </div>
+      {{ end }} -->
+    </div>
+  </div>
+  <!-- <select class="{{ $class }} 2xl:mr-[32px] xl:mr-[32px] lg:mr-[32px] md:mr-[20px] sm:mr-[20px]" onchange="location = this.value">
+    {{ range $siteLanguages }}
+      {{ if eq (string $pageLang) (string .Language) }}
+        <option
+          id="{{ .Language }}"
+          value="{{ replace (add .RelPermalink $pageLink) `//` `/` }}"
+          selected>
+          11
+          <span class="fi fi-gr fis"></span>
+          {{ .Language.LanguageName }}
+        </option>
+      {{ else }}
+        <option
+          id="{{ .Language }}"
+          value="{{ replace (add .RelPermalink $pageLink) `//` `/` }}">
+          <div>
+            22
+            <span class="fi fi-gr fis"></span>
+            {{ .Language.LanguageName }}
+          </div>
+        </option>
+      {{ end }}
+    {{ end }}
+  </select> -->
